@@ -31,7 +31,6 @@ gem 'turbolinks'
 
 gem 'bootstrap'
 gem 'figaro'
-gem 'pry'
 
 gem 'active_model_serializers'
 
@@ -62,5 +61,6 @@ group :development, :test do
   gem 'shoulda'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'pry'
 
 end
