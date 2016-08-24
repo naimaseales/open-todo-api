@@ -4,6 +4,6 @@ class UserSerializer < ActiveModel::Serializer
   has_many :lists
 
   def created_at
-    object.created_at.strftime('%B %d, %Y')
+    object.created_at.iso8601
   end
 end
