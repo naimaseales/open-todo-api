@@ -4,7 +4,4 @@ class ListSerializer < ActiveModel::Serializer
   belongs_to :user
   has_many :items
 
-  # def title
-  #   object.title
-  # end
 end
