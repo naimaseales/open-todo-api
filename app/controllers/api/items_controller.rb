@@ -2,12 +2,9 @@ class Api::ItemsController < ApiController
   before_action :authenticated?
 
   def create
-    #binding.pry
     list = List.find(params[:list_id])
+    item = list.items.new(item_params)
 
-    item = Item.new(item_params)
-
-    user = User.find(params[:user_id])
     if item.save
       render json: item
     else

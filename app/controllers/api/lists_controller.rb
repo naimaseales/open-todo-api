@@ -3,8 +3,8 @@ class Api::ListsController < ApiController
 
   def create
     user = User.find(params[:user_id])
+    list = user.lists.new(list_params)
 
-    list = List.new(list_params)
     if list.save
       render json: list
     else
