@@ -61,6 +61,6 @@ group :development, :test do
   gem 'shoulda'
   gem 'faker'
   gem 'factory_girl_rails'
-  gem 'pry'
+  gem 'pry-rails'
 
 end
