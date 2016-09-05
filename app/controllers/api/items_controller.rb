@@ -8,7 +8,7 @@ class Api::ItemsController < ApiController
     if item.save
       render json: item
     else
-      rendor json: { errors: user.errors.full_messages }, status: :unprocessable_entity #:HTTP Basic: Access denied.
+      rendor json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

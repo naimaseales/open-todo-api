@@ -34,5 +34,5 @@ User.create!(
 
 puts "Seed finished"
 puts "#{User.count} users created"
-puts "#{List.count} topics created"
-puts "#{Item.count} comments created"
+puts "#{List.count} lists created"
+puts "#{Item.count} items created"
