@@ -1,24 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Api::UsersController, type: :controller do
+  include AuthHelper
+
   describe "POST create" do
 
-    it "creates new user" do
-      user = FactoryGirl.create(:user)
-      serializer = UserSerializer.new(user)
-      expect(serializer.serializable_hash[:email]).to eq "user@example.com"
-      expect(user.password).to eq "my-password"
-    end
-
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
-
-    it "renders the json representation of the user record" do
-      user = FactoryGirl.create(:user)
+    it "creates a user and renders the json representation of the user record" do
+      http_login
       @user_atttributes = FactoryGirl.attributes_for :user
-      post :create, { user: @user_atttributes }, format: :json
-      expect(user[:email]).to eql @user_atttributes[:email]
+      expect{post :create, { user: @user_atttributes }, format: :json}.to   change(User, :count).by(1)
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "deletes the user" do
+      # binding.pry
+      http_login
+      @user = create(:user)
+      delete :destroy, id: @user.id
+      count = User.where({id: @user.id}).size
+      expect(count).to eq 0
     end
   end
 end
