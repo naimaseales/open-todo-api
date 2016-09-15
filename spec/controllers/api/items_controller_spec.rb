@@ -8,17 +8,10 @@ RSpec.describe Api::ItemsController, type: :controller do
       http_login
       @list = create(:list)
       @item = create(:item, list: @list)
-      expect{post :create, { list_id: @list.id, id: @item.id }, format: :json}.to   change(Item, :count).by(1)
+      expect{post :create, item: {description: "Fancy Item"}, list_id: @list.id}.to change(Item, :count).by(1)
       expect(response).to have_http_status(200)
     end
-
-    it "returns http success" do
-      http_login
-      @list = create(:list)
-      @item = create(:item, list: @list)
-      expect(response).to have_http_status(:success)
-    end
-  end
+end
 
   describe "DELETE destroy" do
     it "deletes the list" do

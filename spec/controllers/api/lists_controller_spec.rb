@@ -9,15 +9,8 @@ RSpec.describe Api::ListsController, type: :controller do
       http_login
       @user = create(:user)
       @list = create(:list, user: @user)
-      expect{post :create, { user_id: @user.id, id: @list.id }, format: :json}.to   change(List, :count).by(1)
+      expect{post :create, user_id: @user.id, list: {title: "It's a title"}, format: :json}.to   change(List, :count).by(1)
       expect(response).to have_http_status(200)
-    end
-
-    it "returns http success" do
-      http_login
-      @user = create(:user)
-      @list = create(:list, user: @user)
-      expect(response).to have_http_status(:success)
     end
   end
 
