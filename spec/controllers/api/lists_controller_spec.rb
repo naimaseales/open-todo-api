@@ -4,12 +4,23 @@ RSpec.describe Api::ListsController, type: :controller do
   include AuthHelper
 
   describe "POST create" do
-    # before { post :create, user_id: my_user.id, list: { title: my_list.title } }
+
     it "list size to increase" do
       http_login
       @user = create(:user)
       @list = create(:list, user: @user)
       expect{post :create, user_id: @user.id, list: {title: "It's a title"}, format: :json}.to   change(List, :count).by(1)
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "PUT update" do
+
+    it "updates the list" do
+      http_login
+      @user = create(:user)
+      @list = create(:list, user: @user)
+      put :update, list: {permission: "viewable"}, user_id: @user.id, id: @list.id
       expect(response).to have_http_status(200)
     end
   end
