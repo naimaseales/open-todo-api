@@ -9,7 +9,8 @@ users = User.all
 15.times do
   List.create!(
     user: users.sample,
-    title: Faker::Hacker.noun
+    title: Faker::Hacker.noun,
+    permission: "private"
   )
 end
 
@@ -18,7 +19,8 @@ lists = List.all
 50.times do
   Item.create!(
     list: lists.sample,
-    description: Faker::Hacker.ingverb
+    description: Faker::Hacker.ingverb,
+    completed: true
   )
 end
 
