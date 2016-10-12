@@ -36,6 +36,9 @@ gem 'figaro'
 
 gem 'active_model_serializers'
 
+gem 'rspec_api_documentation'
+# gem 'raddocs'
+
 group :test do
   gem 'rspec-rails'
   gem 'simplecov'

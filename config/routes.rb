@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :orders
   namespace :api, defaults: { format: :json } do
     resources :users do
       resources :lists
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :items, only: [:create, :destroy, :update]
     end
 
-    #  resources :items, only: [:index]
+    #  resources :orders
+
   end
 end
