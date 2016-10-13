@@ -1,12 +1,10 @@
 class Api::ItemsController < ApiController
   before_action :authenticated?
 
-  # def index
-  #   list = List.find(params[:list_id])
-  #   items = list.items
-  #
-  #   render json: items
-  # end
+  def index
+    items = Items.all
+    render json: items
+  end
 
   def create
     list = List.find(params[:list_id])
